@@ -1,0 +1,101 @@
+/* Styling for the entire container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5e1c2; /* Background to match the Wild West theme */
+}
+
+/* Styling for the multiplier panel on the left */
+.multiplier-panel {
+    background-color: #cfa07d;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #8d6e63;
+    border-radius: 10px;
+}
+
+.multiplier-item {
+    background-color: #8d6e63;
+    color: white;
+    padding: 10px 15px;
+    margin: 5px 0;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.multiplier-item:hover {
+    background-color: #6e4f41;
+}
+
+/* Styling for the game area on the right */
+.game-area {
+    margin-left: 50px;
+    padding: 20px;
+    background-color: #e1c295;
+    border: 3px solid #8d6e63;
+    border-radius: 10px;
+    width: 300px;
+    position: relative;
+}
+
+/* Styling for the tabs */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.tab {
+    background-color: #d7b38c;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tab.active {
+    background-color: #f4ca97;
+}
+
+.tab:hover {
+    background-color: #f4ca97;
+}
+
+/* Styling for the bet grid */
+.bet-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.box {
+    width: 120px;
+    height: 80px;
+    background-color: #d6b08b;
+    border: 3px solid #8d6e63;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.box:hover {
+    background-color: #bf9474;
+}
+
+/* Styling for the instruction text */
+.instruction {
+    text-align: center;
+    background-color: #6e4f41;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}

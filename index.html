@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild West Gold Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Multiplier Panel on the Left -->
+        <div class="multiplier-panel">
+            <div class="multiplier-item">x1024</div>
+            <div class="multiplier-item">x512</div>
+            <div class="multiplier-item">x256</div>
+            <div class="multiplier-item">x128</div>
+            <div class="multiplier-item">x64</div>
+            <div class="multiplier-item">x32</div>
+            <div class="multiplier-item">x16</div>
+            <div class="multiplier-item">x8</div>
+            <div class="multiplier-item">x4</div>
+            <div class="multiplier-item">x2</div>
+        </div>
+
+        <!-- Bet Selection Grid on the Right -->
+        <div class="game-area">
+            <!-- Tabs for 2x and 3x -->
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab(2)">2x</div>
+                <div class="tab" onclick="switchTab(3)">3x</div>
+            </div>
+
+            <!-- Grid with Boxes for Selection -->
+            <div class="bet-grid" id="betGrid"></div>
+            
+            <!-- Instruction Text -->
+            <div class="instruction">
+                SELECT DIFFICULTY LEVEL AND PLACE YOUR BET!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to switch between 2x and 3x layouts
+        function switchTab(columns) {
+            // Switch active tab style
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            tabs[columns - 2].classList.add('active');
+
+            // Update the grid layout and contents
+            const betGrid = document.getElementById('betGrid');
+            betGrid.innerHTML = ''; // Clear previous boxes
+
+            // Set grid configuration
+            betGrid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`; // Set columns
+            populateBoxes(columns);
+        }
+
+        // Function to randomly populate boxes with bombs and gold
+        function populateBoxes(numColumns) {
+            const betGrid = document.getElementById('betGrid');
+            const items = numColumns === 2 ? ['gold', 'bomb'] : ['gold', 'bomb', 'bomb'];
+
+            // Shuffle items array for random placement
+            items.sort(() => Math.random() - 0.5);
+
+            // Create boxes and set data attributes
+            items.forEach(item => {
+                const box = document.createElement('div');
+                box.classList.add('box');
+                box.setAttribute('data-item', item); // Set data attribute for CSS
+                betGrid.appendChild(box);
+            });
+
+            // After creating boxes, set background images via CSS
+            setBackgroundImages();
+        }
+
+        // Function to set background images based on data attributes
+        function setBackgroundImages() {
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+                const item = box.getAttribute('data-item');
+                box.style.backgroundImage = `url(${item}.png)`; // Set background image
+                box.style.backgroundSize = 'cover'; // Ensure the image covers the box
+                box.style.backgroundPosition = 'center'; // Center the image in the box
+            });
+        }
+
+        // Initialize default 2x layout on page load
+        switchTab(2);
+    </script>
+</body>
+</html>
